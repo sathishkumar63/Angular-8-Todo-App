@@ -1,0 +1,58 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: auto;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.sidenav .mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+@media only screen and (min-width: 1024px) {
+  .ml-md-6 {
+    margin-left: 4rem !important;
+  }
+}
+
+.mat-sidenav-content {
+  transition: margin-left ease .2s;
+}
+
+.mat-sidenav-content .top-nav {
+  z-index: 10;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul li:last-child {
+  border-bottom: none !important;
+}
+
+ul .nav-sidebar_dropdown .nav-sidebar_submenu {
+  overflow: hidden;
+}
+
+ul .nav-sidebar_dropdown .nav-sidebar_submenu li.nav-sidebar_subdropdown:last-child {
+  border-bottom: none !important;
+}
+
+.logo-ht {
+  height: 2rem;
+}
+
+.custom-wrapper {
+  min-height: calc(100vh - 80px);
+  margin-top: 7rem;
+}

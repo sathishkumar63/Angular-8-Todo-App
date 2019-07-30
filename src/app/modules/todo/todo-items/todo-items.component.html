@@ -1,0 +1,58 @@
+<div class="container my-5 p-0">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card border-0 shadow rounded-0">
+        <div class="card-header bg-white border-0 d-flex align-items-center">
+          <mat-checkbox *ngIf="todos?.length !== 0" [(ngModel)]="masterSelected" [checked]="masterSelected" (change)="checkUncheckAll()"
+            class="mr-4"></mat-checkbox>
+          <form #todoForm="ngForm" class="w-100">
+            <mat-form-field class="w-100" appearance="standard">
+              <input type="text" name="task" [(ngModel)]="newTodo.task" #task matInput
+                placeholder="What needs to be done?" (keydown.enter)="addTodo(todoForm)">
+              <mat-icon matSuffix>mode_edit</mat-icon>
+            </mat-form-field>
+          </form>
+        </div>
+        <div *ngIf="todos?.length !== 0" class="card-body p-0">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item" *ngFor="let todo of todoList; index as i;">
+              <mat-checkbox *ngIf="todo.id !== editTodo.id" id="task{{todo.id}}" name="task{{todo.id}}"
+                [checked]="todo.completed" (change)="updateTodoStatus(todo)"></mat-checkbox>
+              <mat-form-field class="w-100" *ngIf="todo.id === editTodo.id" appearance="fill">
+                <input matInput type="text" name="editTask" [(ngModel)]="todo.title" (focusout)="editTodo = {};"
+                  (keydown.enter)="updateTodo(todo)" appAutoFocus>
+              </mat-form-field>
+              <p *ngIf="todo.id !== editTodo.id" [ngClass]="{'strike-text': todo.completed }" class="d-inline-flex ml-4"
+                (dblclick)="hasEditTodo(todo)">
+                {{todo.title}}</p>
+              <button *ngIf="todo.id !== editTodo.id" class="float-right btn btn-sm close-btn"
+                (click)="deleteTodo(todo)" matTooltip="Delete" mat-icon-button aria-label="Delete todo task">
+                <mat-icon>close</mat-icon>
+              </button>
+            </li>
+          </ul>
+        </div>
+        <div *ngIf="todos?.length !== 0" class="card-footer bg-white d-flex flex-column flex-sm-row justify-content-between align-items-center">
+          <p class="mb-sm-0">
+            <span id="todo-count">
+              <strong>{{ leftItems.length }}</strong>
+              <span *ngIf="leftItems.length > 1; else otherContent"> items</span>
+              <ng-template #otherContent>
+                item
+              </ng-template>
+              left
+            </span>
+          </p>
+          <div class="d-flex justify-content-between my-3 my-sm-0">
+            <button mat-button [ngClass]="{'border': currentState === '' }" (click)="setState('')">All</button>
+            <button mat-button [ngClass]="{'border': currentState === 'Active' }"
+              (click)="setState('Active')">Active</button>
+            <button mat-button [ngClass]="{'border': currentState === 'Completed' }"
+              (click)="setState('Completed')">Completed</button>
+          </div>
+          <button mat-button color="warn" (click)="clearCompleted()">Clear Completed</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

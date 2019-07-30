@@ -1,0 +1,41 @@
+{
+  "$schema": "./node_modules/@angular/service-worker/config/schema.json",
+  "appData": {
+    "name": "Angular 8 Todos",
+    "description": "Todos App in Angular 8",
+    "version": "1.1.0",
+    "changelog": "Added better resource caching for Todo App"
+  },
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "resources": {
+        "files": [
+          "/index.html",
+          "/favicon.ico",
+          "/*.css",
+          "/*.js",
+          "/vendor.*.js",
+          "/main.*.js",
+          "/polyfills.*.js",
+          "/runtime.*.js"
+        ],
+        "urls": [
+          "https://fonts.googleapis.com/**"
+        ]
+      }
+    }, {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "resources": {
+        "files": [
+          "/assets/**",
+          "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
+        ]
+      }
+    }
+  ]
+}

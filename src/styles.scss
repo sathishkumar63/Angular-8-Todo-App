@@ -1,0 +1,64 @@
+html,
+body {
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+router-outlet~* {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+// Remove the blue outline on links, and buttons when they are active
+* {
+
+  &:active,
+  :focus {
+    outline: none !important;
+  }
+}
+
+.mat-raised-button:not([disabled]):active:not([class*=mat-elevation-z]) {
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, .2), 0 8px 10px 1px rgba(0, 0, 0, .14), 0 3px 14px 2px rgba(0, 0, 0, .12) !important
+}
+
+// Scrollbar Start
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #6e6e6e;
+  outline: #333 solid 1px;
+}
+// Scrollbar End
+
+.btn.focus,
+.btn:focus {
+  box-shadow: none;
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+}
+
+// Box-Shadow Start
+.z-depth-3 {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+}
+
+.z-depth-6 {
+  box-shadow: 0 5px 10px rgba(36, 50, 56, 0.25);
+}
+// Box-Shadow End
